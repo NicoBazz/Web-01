@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Buscador del catalogo</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="css/style.css" rel="stylesheet">
+	</head>
+	<p style="background-image: url('images\banner.jpg');"></p>
+	<body>
+		<center>
+			<div class="container mt-5">
+			<h1>Buscador por palabra</h1>
+			<br>
+			<br>
+			<p> <center> PampaPlace es una plataforma online multvi servicio donde podras encontrar productos contactos informacion cultura negocios noticias </center></p>
+			<br>
+			<br>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae consequuntur itaque eius quam dolorum ut quasi quia quos ipsum distinctio facere quaerat, accusamus ratione cumque deserunt nulla debitis modi?</p>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae consequuntur itaque eius quam dolorum ut quasi quia quos ipsum distinctio facere quaerat, accusamus ratione cumque deserunt nulla debitis modi?</p>
+			<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore quae consequuntur itaque eius quam dolorum ut quasi quia quos ipsum distinctio facere quaerat, accusamus ratione cumque deserunt nulla debitis modi?</p>
+			<input type="text"id="formulario">
+			<button class="btn btn-info mb-2" id="boton">Buscar</button>
+			<ul id="resultado"><li>aesede</li></ul>
+		
+	<script>
+		var parrafos = document.querySelectorAll("p");
+		console.log(parrafos);
+		for(let cambio of parrafos){
+			cambio.classList.add("text-danger");
+		}
+		</script>
+	</div>
+	<script>
+		const productos = [
+    {enlace:'*Tu enlace', nombre: '<button class="btn btn-info mb-2" a href="landing.html" class="link">Platano', valor: 500},
+    {enlace:'*Tu enlace', nombre: 'Sandia', valor: 500},
+    {enlace:'*Tu enlace', nombre: 'Sandia', valor: 500},
+    {enlace:'*Tu enlace', nombre: 'Melon', valor: 500},
+    {enlace:'*Tu enlace', nombre: 'Frutillas', valor: 500},
+]
+
+
+const formulario = document.querySelector('#formulario');
+const boton = document.querySelector('#boton');
+const resultado = document.querySelector('#resultado');
+
+
+const filtrar = ()=>{
+    /*console.log(formulario.value);*/
+    resultado.innerHTML = '';
+    
+    const texto = formulario.value.toLowerCase();
+    for(let producto of productos){
+        let nombre = producto.nombre.toLowerCase();
+        if(nombre.indexOf(texto) !== -1){
+            resultado.innerHTML += `
+			<li>${producto.nombre} - Valor: ${producto.valor}</li>
+		`
+	}
+    }
+    
+    if(resultado.innerHTML === ''){
+        resultado.innerHTML += '<li> Producto no encontrado </li>';
+    }
+}
+
+
+boton.addEventListener('click',filtrar);
+formulario.addEventListener('keyup',filtrar);
+
+filtrar();	
+	</script>
+	</center>
+	</body>
+</html>
